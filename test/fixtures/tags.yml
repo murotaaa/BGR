@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  game_id: 1
+  excellent: false
+  good: false
+  fair: false
+  not_good: false
+  bad: false
+  for_kid: false
+  for_teen: false
+  for_woman: false
+  for_man: false
+  for_beginner: false
+  for_geek: false
+  carefully: false
+  excitement: false
+
+two:
+  user_id: 1
+  game_id: 1
+  excellent: false
+  good: false
+  fair: false
+  not_good: false
+  bad: false
+  for_kid: false
+  for_teen: false
+  for_woman: false
+  for_man: false
+  for_beginner: false
+  for_geek: false
+  carefully: false
+  excitement: false
