@@ -1,2 +1,23 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<div><%= attachment_image_tag @game, :image, :fill, 180, 180 %></div>
+<div><%= @game.title %></div>
+<div><%= @game.original_title %></div>
+<div><%= @game.designer %></div>
+<div><%= @game.release %></div>
+<div><%= @game.player %></div>
+<div><%= @game.age %></div>
+<% if @game.watched_by?(current_user) %>
+  <li>
+    <%= link_to game_watches_path(@game), method: :delete do %>
+    <button class="btn btn-danger">ウォッチリストから外す</button>
+    <% end %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to game_watches_path(@game), method: :post do %>
+    <button class="btn btn-danger">ウォッチリストに追加</button>
+    <% end %>
+  </li>
+<% end %>
+
+<%= link_to 'edit', edit_game_path %>
+<%= link_to 'destroy', game_path, method: :delete %>

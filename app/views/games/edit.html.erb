@@ -1,2 +1,12 @@
-<h1>Games#edit</h1>
-<p>Find me in app/views/games/edit.html.erb</p>
+<%= form_with model: @game, local: true do |f| %>
+  <%= f.attachment_field :image %>
+  <%= f.text_field :title, placeholder: "ゲーム名" %>
+  <%= f.text_field :original_title, placeholder: "原題" %>
+  <%= f.text_field :designer, placeholder: "作者" %>
+  <%= f.text_field :release, placeholder: "発売年" %>
+  <%= f.text_field :player, placeholder: "プレイ人数" %>
+  <%= f.text_field :weight, placeholder: "プレイ時間" %>
+  <%= f.text_field :age, placeholder: "対象年齢" %>
+  <%= f.submit "更新する" %>
+<% end %>
+<%= link_to "削除する", game_path, method: :delete %>
