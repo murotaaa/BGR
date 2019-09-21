@@ -1,0 +1,2 @@
+module SuperMidlleWeightsHelper
+end

@@ -1,0 +1,2 @@
+module RepeatMoreInterestingsHelper
+end

@@ -1,0 +1,5 @@
+<% if @game.watched_by?(current_user) %>
+  <%= link_to "ウォッチリストから外す", game_watches_path(@game), method: :delete, remote: true, class: "show_button watch_color" %>
+<% else %>
+  <%= link_to "ウォッチリストに追加", game_watches_path(@game), method: :post, remote: true, class: "show_button yet_color" %>
+<% end %>

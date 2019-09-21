@@ -1,0 +1,2 @@
+module HandManagementsHelper
+end

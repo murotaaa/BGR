@@ -1,6 +1,12 @@
 class GamesController < ApplicationController
   def index
-      @games = Game.all
+      @search = Game.ransack(params[:q])
+      @search.sorts = 'id desc' if @search.sorts.empty?
+      @games = @search.result.page(params[:page]).per(8)
+
+      @excellent_ranks = Game.find(Excellent.group(:game_id).order('count(game_id) desc').limit(4).pluck(:game_id))
+      @beginner_ranks = Game.find(ForBeginner.group(:game_id).order('count(game_id) desc').limit(4).pluck(:game_id))
+      @excitement_ranks = Game.find(Excitement.group(:game_id).order('count(game_id) desc').limit(4).pluck(:game_id))
   end
 
   def show
@@ -34,8 +40,11 @@ class GamesController < ApplicationController
       redirect_to games_path
   end
 
+  def about
+  end
+
 private
   def game_params
-      params.require(:game).permit(:image, :title, :original_title, :designer, :release, :player, :age, :weight)
+    params.require(:game).permit(:image, :title, :original_title, :designer, :release, :player, :age, :weight)
   end
 end

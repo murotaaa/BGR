@@ -15,3 +15,72 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+ .myself_container {
+    padding: 10px;
+    border: solid 2px #8B0000;
+}
+
+.title {
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 0 9px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    background: #8B0000;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+ .header {
+     height: 40px;
+     background-color: #8B0000;
+}
+
+.login {
+    text-align: center;
+    color: brack;
+}
+
+.search-box {
+    width: 350px;
+    height: 32px;
+}
+
+.name {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+.name:hover {
+    text-decoration: none;
+}
+
+.header-content {
+    text-align: center;
+    color: white;
+}
+
+.header-content:hover {
+    text-decoration: none;
+}
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #8B0000;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}

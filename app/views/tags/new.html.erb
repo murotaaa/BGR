@@ -1,0 +1,5 @@
+<%= form_with(model: @tag, local: true) do |f| %>
+  <%= f.check_box :excellent, {class: "aa"}, checked_value = "true", unchecked_value = "false" %>大好き
+  <%= f.check_box :good, {class: "aa"}, checked_value = "true", unchecked_value = "false" %>好き
+  <%= f.submit "評価を反映" %>
+<% end %>

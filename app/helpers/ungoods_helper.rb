@@ -1,0 +1,2 @@
+module UngoodsHelper
+end

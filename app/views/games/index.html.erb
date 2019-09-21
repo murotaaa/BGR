@@ -1,7 +1,68 @@
-<% @games.each do |game| %>
-  <div><%= attachment_image_tag game, :image, :fill, 180, 180 %></div>
-  <div><%= game.title %></div>
-  <div><%= game.designer %></div>
-  <div><%= game.player %></div>
-  <div><%= link_to "詳細", game_path(game.id) %></div>
-<% end %>
+<div class="container main_image"></div>
+<div class="container myself_container">
+  <div class="row">
+  	<div class="col-lg-4"></div>
+  	<div class="col-lg-4">
+      <%= search_form_for @search do |f| %>
+        <%= f.search_field :title_cont, class: "search_box", placeholder: "タイトルで検索できます" %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-2">
+      <%= link_to "ゲームを登録する", new_game_path, class: "new_button btn" %>
+    </div>
+    <h3 class="title col-lg-12">ゲーム一覧</h3>
+    <div class="col-lg-10 col-lg-offset-1", style="margin-top: 10px;">
+      <% @games.each do |game| %>
+        <div class="index_game_box col-lg-3">
+          <div class="game_image"><%= attachment_image_tag game, :image, :fill, 203, 203 %></div>
+          <div class="index_game_contents"><%= link_to game.title, game_path(game.id) %></div>
+          <div class="index_game_contents"><%= game.designer %></div>
+          <div class="index_game_contents"><%= game.player %></div>
+          <div class="index_game_contents"><%= game.weight %></div>
+        </div>
+      <% end %>
+      <div class="col-lg-12", style="text-align: center";><%= paginate @games, class: "paginate" %></div>
+    </div>
+    <h3 class="title col-lg-12">愛されゲームランキング</h3>
+　    <div class="col-lg-10 col-lg-offset-1", style="margin-top: 10px;">
+        <% @excellent_ranks.each.with_index(1) do |e, i| %>
+          <div class="index_game_box col-lg-3">
+            <div class="index_game_contents"><%= i %>位</div>
+            <div class="game_image"><%= attachment_image_tag e, :image, :fill, 203, 203 %></div>
+            <div class="index_game_contents"><%= link_to e.title, game_path(e.id) %></div>
+            <div class="index_game_contents"><%= e.designer %></div>
+            <div class="index_game_contents"><%= e.player %></div>
+            <div class="index_game_contents"><%= e.weight %></div>
+          </div>
+        <% end %>
+      </div>
+      <h3 class="title col-lg-12">初心者にオススメゲームランキング</h3>
+　    <div class="col-lg-10 col-lg-offset-1", style="margin-top: 10px;">
+        <% @beginner_ranks.each.with_index(1) do |b, i| %>
+          <div class="index_game_box col-lg-3">
+            <div class="index_game_contents"><%= i %>位</div>
+            <div class="game_image"><%= attachment_image_tag b, :image, :fill, 203, 203 %></div>
+            <div class="index_game_contents"><%= link_to b.title, game_path(b.id) %></div>
+            <div class="index_game_contents"><%= b.designer %></div>
+            <div class="index_game_contents"><%= b.player %></div>
+            <div class="index_game_contents"><%= b.weight %></div>
+          </div>
+        <% end %>
+      </div>
+      <h3 class="title col-lg-12">ワイワイ盛り上がるゲームランキング</h3>
+　    <div class="col-lg-10 col-lg-offset-1", style="margin-top: 10px;">
+        <% @excitement_ranks.each.with_index(1) do |e, i| %>
+          <div class="index_game_box col-lg-3">
+            <div class="index_game_contents"><%= i %>位</div>
+            <div class="game_image"><%= attachment_image_tag e, :image, :fill, 203, 203 %></div>
+            <div class="index_game_contents"><%= link_to e.title, game_path(e.id) %></div>
+            <div class="index_game_contents"><%= e.designer %></div>
+            <div class="index_game_contents"><%= e.player %></div>
+            <div class="index_game_contents"><%= e.weight %></div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>

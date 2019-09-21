@@ -1,0 +1,2 @@
+module LongWaitingTimesHelper
+end

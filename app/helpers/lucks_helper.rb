@@ -1,0 +1,2 @@
+module LucksHelper
+end

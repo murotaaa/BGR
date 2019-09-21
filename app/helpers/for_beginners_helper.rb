@@ -1,0 +1,2 @@
+module ForBeginnersHelper
+end

@@ -1,4 +1,20 @@
-<% @watches.each do |w| %>
-  <%= attachment_image_tag w.game, :image, :fill, 200, 200 %>
-  <%= link_to w.game.title, games_path(w.game.id) %>
-<% end %>
+<div class="container myself_container">
+  <div class="row">
+    <h3 class="title col-lg-12">ウォッチリスト</h3>
+	<% @watches.each do |w| %>
+	  <div class="col-lg-10 col-lg-offset-1", style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #8B0000;">
+	    <div class="col-lg-3"><%= attachment_image_tag w.game, :image, :fill, 200, 200 %></div>
+		<div class="col-lg-7">
+		  <div class="watch_contents", style="margin-top: 20px;">タイトル: <%= link_to w.game.title, game_path(w.game.id) %></div>
+		  <div class="watch_contents">作者: <%= w.game.designer %></div>
+		  <div class="watch_contents">プレイ人数: <%= w.game.player %></div>
+		  <div class="watch_contents">プレイ時間: <%= w.game.weight %></div>
+		  <div><%= link_to game_watches_path(w), method: :delete do %>
+		    <button class="btn btn-danger", style="margin-top: 5px;">ウォッチリストから外す</button>
+		       <% end %>
+		  </div>
+		</div>
+	  </div>
+	<% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module EasyRulesHelper
+end

@@ -1,0 +1,2 @@
+module DrunkCanEnjoysHelper
+end

@@ -1,0 +1,2 @@
+module ForTeensHelper
+end

@@ -1,0 +1,2 @@
+module RepeatUninterestingsHelper
+end

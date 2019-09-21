@@ -1,0 +1,2 @@
+module DraftingsHelper
+end

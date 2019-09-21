@@ -1,0 +1,2 @@
+module ConcealmentsHelper
+end

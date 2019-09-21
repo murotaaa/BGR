@@ -1,12 +1,39 @@
-<%= form_with model: @game, local: true do |f| %>
-  <%= f.attachment_field :image %>
-  <%= f.text_field :title, placeholder: "ゲーム名" %>
-  <%= f.text_field :original_title, placeholder: "原題" %>
-  <%= f.text_field :designer, placeholder: "作者" %>
-  <%= f.text_field :release, placeholder: "発売年" %>
-  <%= f.text_field :player, placeholder: "プレイ人数" %>
-  <%= f.text_field :weight, placeholder: "プレイ時間" %>
-  <%= f.text_field :age, placeholder: "対象年齢" %>
-  <%= f.submit "更新する" %>
-<% end %>
-<%= link_to "削除する", game_path, method: :delete %>
+<div class="container myself_container">
+  <div class="row">
+    <h3 class="title col-lg-12">ゲーム編集</h3>
+    <div class="col-lg-6 col-lg-offset-3">
+      <%= form_with model: @game, local: true do |f| %>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.attachment_field :image, class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :original_title, placeholder: "原題", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :designer, placeholder: "作者", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :release, placeholder: "発売年", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :player, placeholder: "プレイ人数", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :weight, placeholder: "プレイ時間", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 form-group">
+          <%= f.text_field :age, placeholder: "対象年齢", class: "form-control" %>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3">
+          <%= f.submit "更新する", class: "col-lg-12 sessions_registrations_submit btn", style: "background: #8B0000" %>
+        </div>
+      <% end %>
+      <div class="col-lg-6 col-lg-offset-3">
+      	<%= link_to "削除する", game_path, method: :delete, class: "col-lg-12 sessions_registrations_submit btn" %>
+      </div>
+    </div>
+  </div>
+</div>
