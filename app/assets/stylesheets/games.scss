@@ -34,8 +34,26 @@
     color: #FFF;
 }
 
-.show_button {
+.show_watch_button {
     width: 180px;
+    height: 30px;
+    display: inline-block;
+    font-size: 15px; /*文字サイズ*/
+    line-height: 1;
+    text-decoration: none;
+    letter-spacing: 0.05em; /*字間*/
+    padding-top: 7px;
+    border-radius: 3px; /*角の丸み*/
+    cursor: pointer;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); /*影*/
+    -webkit-tap-highlight-color: transparent;
+    transition: .3s ease-out; /*変化を緩やかに*/
+    margin-top: 7px;
+    text-align: center;
+}
+
+.show_button {
+    width: 88px;
     height: 30px;
     display: inline-block;
     font-size: 15px; /*文字サイズ*/
@@ -57,7 +75,12 @@
 }
 
 .edit_color {
-	background-color: green;
+	background-color: #8B0000;
+    color: #FFF;
+}
+
+.destroy_color {
+    background-color: #8B0000;
     color: #FFF;
 }
 

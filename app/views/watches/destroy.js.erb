@@ -1,1 +1,2 @@
-('#watches_buttons_<%= @game.id %>').html("<%= j(render partial: 'watches/watch', locals: {game: @game}) %>");
+$('#watches_buttons_<%= @game.id %>').html("<%= j(render partial: 'watches/watch', locals: {game: @game}) %>");
+$('#watches_out_buttons').html("<%= j(render partial: 'watches/watch_out', locals: {watches: @watches}) %>");

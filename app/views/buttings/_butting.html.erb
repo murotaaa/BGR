@@ -1,0 +1,7 @@
+<% if game.buttinged_by?(current_user) %>
+  <%= link_to "バッティング", game_buttings_path(game), method: :delete, remote: true, class: "tag_button mechanics_color" %>
+  <div class="tag_count"><%= @game.buttings.count %></div>
+<% else %>
+  <%= link_to "バッティング", game_buttings_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.buttings.count %></div>
+<% end %>

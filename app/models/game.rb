@@ -1,8 +1,15 @@
 class Game < ApplicationRecord
 	has_many :watches, dependent: :destroy
-	has_many :tags
 	belongs_to :user
 	attachment :image
+
+  validates :title, presence: true
+  validates :original_title, presence: true
+  validates :designer, presence: true
+  validates :player, presence: true
+  validates :age, presence: true
+  validates :weight, presence: true
+  validates :release, presence: true
 
   has_many :excellents
   has_many :goods
@@ -48,9 +55,6 @@ class Game < ApplicationRecord
   has_many :studies
   has_many :lucks
   has_many :forces
-  has_many :balances
-  has_many :repeat_more_interestings
-  has_many :repeat_uninterestings
   has_many :only_onces
   has_many :long_waiting_times
   has_many :easy_rules
@@ -191,15 +195,6 @@ class Game < ApplicationRecord
     end
     def forced_by?(user)
       forces.where(user_id: user.id).exists?
-    end
-    def balanced_by?(user)
-      balances.where(user_id: user.id).exists?
-    end
-    def repeat_more_interestinged_by?(user)
-      repeat_more_interestings.where(user_id: user.id).exists?
-    end
-    def repeat_uninterestinged_by?(user)
-      repeat_uninterestings.where(user_id: user.id).exists?
     end
     def only_onced_by?(user)
       only_onces.where(user_id: user.id).exists?

@@ -1,0 +1,7 @@
+<% if game.many_expansioned_by?(current_user) %>
+  <%= link_to "拡張が多い", game_many_expansions_path(game), method: :delete, remote: true, class: "tag_button other_color" %>
+  <div class="tag_count"><%= @game.many_expansions.count %></div>
+<% else %>
+  <%= link_to "拡張が多い", game_many_expansions_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.many_expansions.count %></div>
+<% end %>

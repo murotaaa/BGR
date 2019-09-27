@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :excitements
   has_many :two_p_can_enjoys
   has_many :drunk_can_enjoys
-  has_many :for_singles_partiess
+  has_many :for_singles_parties
   has_many :with_friend_can_enjoys
   has_many :light_weights
   has_many :midlle_weights
@@ -49,9 +49,6 @@ class User < ApplicationRecord
   has_many :studies
   has_many :lucks
   has_many :forces
-  has_many :balances
-  has_many :repeat_more_interestings
-  has_many :repeat_uninterestings
   has_many :only_onces
   has_many :long_waiting_times
   has_many :easy_rules

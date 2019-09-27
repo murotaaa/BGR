@@ -1,0 +1,7 @@
+<% if game.forced_by?(current_user) %>
+  <%= link_to "実力重視", game_forces_path(game), method: :delete, remote: true, class: "tag_button other_color" %>
+  <div class="tag_count"><%= @game.forces.count %></div>
+<% else %>
+  <%= link_to "実力重視", game_forces_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.forces.count %></div>
+<% end %>

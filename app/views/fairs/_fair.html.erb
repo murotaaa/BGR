@@ -1,0 +1,7 @@
+<% if game.faired_by?(current_user) %>
+  <%= link_to "まずまず", game_fairs_path(game), method: :delete, remote: true, class: "tag_button evaluate_color" %>
+  <div class="tag_count"><%= @game.fairs.count %></div>
+<% else %>
+  <%= link_to "まずまず", game_fairs_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.fairs.count %></div>
+<% end %>

@@ -1,0 +1,7 @@
+<% if game.for_womaned_by?(current_user) %>
+  <%= link_to "女性にオススメ", game_for_women_path(game), method: :delete, remote: true, class: "tag_button target_color" %>
+  <div class="tag_count"><%= @game.for_women.count %></div>
+<% else %>
+  <%= link_to "女性にオススメ", game_for_women_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.for_women.count %></div>
+<% end %>

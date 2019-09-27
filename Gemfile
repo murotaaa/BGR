@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'better_errors' # エラー画面をわかりやすくしてくれる
   gem 'binding_of_caller' # better_errorsの画面上にirb/pry(PERL)を表示する
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -74,3 +75,4 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'ransack'
 gem 'kaminari','~> 1.1.1'
+gem 'pry-byebug'

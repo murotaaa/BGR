@@ -1,0 +1,7 @@
+<% if game.for_geeked_by?(current_user) %>
+  <%= link_to "マニアにオススメ", game_for_geeks_path(game), method: :delete, remote: true, class: "tag_button target_color" %>
+  <div class="tag_count"><%= @game.for_geeks.count %></div>
+<% else %>
+  <%= link_to "マニアにオススメ", game_for_geeks_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.for_geeks.count %></div>
+<% end %>

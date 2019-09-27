@@ -1,0 +1,7 @@
+<% if game.for_maned_by?(current_user) %>
+  <%= link_to "男性にオススメ", game_for_men_path(game), method: :delete, remote: true, class: "tag_button target_color" %>
+  <div class="tag_count"><%= @game.for_men.count %></div>
+<% else %>
+  <%= link_to "男性にオススメ", game_for_men_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.for_men.count %></div>
+<% end %>

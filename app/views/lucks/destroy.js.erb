@@ -1,0 +1,1 @@
+$('#lucks_buttons_<%= @game.id %>').html("<%= j(render partial: 'lucks/luck', locals: {game: @game}) %>");

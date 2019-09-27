@@ -1,0 +1,7 @@
+<% if game.two_p_can_enjoyed_by?(current_user) %>
+  <%= link_to "2人でも楽しめる", game_two_p_can_enjoys_path(game), method: :delete, remote: true, class: "tag_button situation_color" %>
+  <div class="tag_count"><%= @game.two_p_can_enjoys.count %></div>
+<% else %>
+  <%= link_to "2人でも楽しめる", game_two_p_can_enjoys_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.two_p_can_enjoys.count %></div>
+<% end %>

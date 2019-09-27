@@ -1,0 +1,7 @@
+<% if game.easy_ruled_by?(current_user) %>
+  <%= link_to "ルールが簡単", game_easy_rules_path(game), method: :delete, remote: true, class: "tag_button other_color" %>
+  <div class="tag_count"><%= @game.easy_rules.count %></div>
+<% else %>
+  <%= link_to "ルールが簡単", game_easy_rules_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.easy_rules.count %></div>
+<% end %>

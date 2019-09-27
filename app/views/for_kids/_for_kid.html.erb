@@ -1,0 +1,7 @@
+<% if game.for_kided_by?(current_user) %>
+  <%= link_to "子供にオススメ", game_for_kids_path(game), method: :delete, remote: true, class: "tag_button target_color" %>
+  <div class="tag_count"><%= @game.for_kids.count %></div>
+<% else %>
+  <%= link_to "子供にオススメ", game_for_kids_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.for_kids.count %></div>
+<% end %>

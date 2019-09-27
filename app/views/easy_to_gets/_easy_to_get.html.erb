@@ -1,0 +1,7 @@
+<% if game.easy_to_geted_by?(current_user) %>
+  <%= link_to "入手しやすい", game_easy_to_gets_path(game), method: :delete, remote: true, class: "tag_button other_color" %>
+  <div class="tag_count"><%= @game.easy_to_gets.count %></div>
+<% else %>
+  <%= link_to "入手しやすい", game_easy_to_gets_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.easy_to_gets.count %></div>
+<% end %>

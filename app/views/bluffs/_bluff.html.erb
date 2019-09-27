@@ -1,0 +1,7 @@
+<% if game.bluffed_by?(current_user) %>
+  <%= link_to "ブラフ", game_bluffs_path(game), method: :delete, remote: true, class: "tag_button mechanics_color" %>
+  <div class="tag_count"><%= @game.bluffs.count %></div>
+<% else %>
+  <%= link_to "ブラフ", game_bluffs_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.bluffs.count %></div>
+<% end %>

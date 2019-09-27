@@ -14,452 +14,267 @@
 		<div id="watches_buttons_<%= @game.id %>">
 		  <%= render partial: 'watches/watch', locals: { game: @game} %>
 		</div>
-		<div><%= link_to "編集する", edit_game_path, class: "show_button edit_color" %></div>
+		<% if @game.user == current_user %>
+		  <%= link_to "編集", edit_game_path, class: "show_button edit_color" %>
+	      <%= link_to "削除", game_path, method: :delete, class: "show_button destroy_color" %>
+	    <% end %>
 	  </div>
 	  <h3 class="col-lg-12">評価</h3>
 	  <div class="col-lg-2">
-	    <% if @game.excellented_by?(current_user) %>
-	      <%= link_to "大好き", game_excellents_path(@game), method: :delete, class: "tag_button evaluate_color" %>
-	    <% else %>
-	      <%= link_to "大好き", game_excellents_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.excellents.count %></div>
+	  	<div id="excellents_buttons_<%= @game.id %>">
+	      <%= render partial: 'excellents/excellent', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.gooded_by?(current_user) %>
-	      <%= link_to "好き", game_goods_path(@game), method: :delete, class: "tag_button evaluate_color" %>
-	    <% else %>
-	      <%= link_to "好き", game_goods_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.goods.count %></div>
+	    <div id="goods_buttons_<%= @game.id %>">
+	      <%= render partial: 'goods/good', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.faired_by?(current_user) %>
-	      <%= link_to "まずまず", game_fairs_path(@game), method: :delete, class: "tag_button evaluate_color" %>
-	    <% else %>
-	      <%= link_to "まずまず", game_fairs_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.fairs.count %></div>
+	    <div id="fairs_buttons_<%= @game.id %>">
+	      <%= render partial: 'fairs/fair', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.ungooded_by?(current_user) %>
-	      <%= link_to "あまり好きじゃない", game_ungoods_path(@game), method: :delete, class: "tag_button evaluate_color" %>
-	    <% else %>
-	      <%= link_to "あまり好きじゃない", game_ungoods_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.ungoods.count %></div>
+	    <div id="ungoods_buttons_<%= @game.id %>">
+	      <%= render partial: 'ungoods/ungood', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.baded_by?(current_user) %>
-	      <%= link_to "好きじゃない", game_bads_path(@game), method: :delete, class: "tag_button evaluate_color" %>
-	    <% else %>
-	      <%= link_to "好きじゃない", game_bads_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.bads.count %></div>
+	   <div id="bads_buttons_<%= @game.id %>">
+	     <%= render partial: 'bads/bad', locals: { game: @game} %>
+	   </div>
 	  </div>
 	  <div class="col-lg-2"></div>
 	  <h3 class="col-lg-12">対象</h3>
 	  <div class="col-lg-2">
-	    <% if @game.for_kided_by?(current_user) %>
-	      <%= link_to game_for_kids_path(@game), method: :delete, style: "padding-top: 12px;", class: "tag_button target_color" do %>
-	        小さい子供<br>にオススメ
-	      <% end %>
-	    <% else %>
-	      <%= link_to game_for_kids_path(@game), method: :post, style: "padding-top: 12px;", class: "tag_button yet_color" do %>
-	        小さい子供<br>にオススメ
-	      <% end %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_kids.count %></div>
+	    <div id="for_kids_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_kids/for_kid', locals: { game: @game} %>
+	    </div>
 	  </div>
       <div class="col-lg-2">
-	    <% if @game.for_teened_by?(current_user) %>
-	      <%= link_to "10代にオススメ", game_for_teens_path(@game), method: :delete, class: "tag_button target_color" %>
-	    <% else %>
-	      <%= link_to "10代にオススメ", game_for_teens_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_teens.count %></div>
+	    <div id="for_teens_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_teens/for_teen', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.for_womaned_by?(current_user) %>
-	      <%= link_to "女性にオススメ", game_for_women_path(@game), method: :delete, class: "tag_button target_color" %>
-	    <% else %>
-	      <%= link_to "女性にオススメ", game_for_women_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_women.count %></div>
+	    <div id="for_women_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_women/for_woman', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.for_maned_by?(current_user) %>
-	      <%= link_to "男性にオススメ", game_for_men_path(@game), method: :delete, class: "tag_button target_color" %>
-	    <% else %>
-	      <%= link_to "男性にオススメ", game_for_men_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_men.count %></div>
+	    <div id="for_men_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_men/for_man', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.for_beginnered_by?(current_user) %>
-	      <%= link_to "初心者にオススメ", game_for_beginners_path(@game), method: :delete, class: "tag_button target_color" %>
-	    <% else %>
-	      <%= link_to "初心者にオススメ", game_for_beginners_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_beginners.count %></div>
+	    <div id="for_beginners_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_beginners/for_beginner', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.for_geeked_by?(current_user) %>
-	      <%= link_to "マニアにオススメ", game_for_geeks_path(@game), method: :delete, class: "tag_button target_color" %>
-	    <% else %>
-	      <%= link_to "マニアにオススメ", game_for_geeks_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_geeks.count %></div>
+	    <div id="for_geeks_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_geeks/for_geek', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <h3 class="col-lg-12">シチュエーション</h3>
 	  <div class="col-lg-2">
-	    <% if @game.carefullied_by?(current_user) %>
-	      <%= link_to "じっくり", game_carefullies_path(@game), method: :delete, class: "tag_button situation_color" %>
-	    <% else %>
-	      <%= link_to "じっくり", game_carefullies_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.carefullies.count %></div>
+	    <div id="carefullies_buttons_<%= @game.id %>">
+	     <%= render partial: 'carefullies/carefully', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.excitemented_by?(current_user) %>
-	      <%= link_to "ワイワイ", game_excitements_path(@game), method: :delete, class: "tag_button situation_color" %>
-	    <% else %>
-	      <%= link_to "ワイワイ", game_excitements_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.excitements.count %></div>
+	    <div id="excitements_buttons_<%= @game.id %>">
+	     <%= render partial: 'excitements/excitement', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.two_p_can_enjoyed_by?(current_user) %>
-	      <%= link_to "2人でも楽しめる", game_two_p_can_enjoys_path(@game), method: :delete, class: "tag_button situation_color" %>
-	    <% else %>
-	      <%= link_to "2人でも楽しめる", game_two_p_can_enjoys_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.two_p_can_enjoys.count %></div>
+	    <div id="two_p_can_enjoys_buttons_<%= @game.id %>">
+	     <%= render partial: 'two_p_can_enjoys/two_p_can_enjoy', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.drunk_can_enjoyed_by?(current_user) %>
-	      <%= link_to "お酒を飲みながら", game_drunk_can_enjoys_path(@game), method: :delete, class: "tag_button situation_color" %>
-	    <% else %>
-	      <%= link_to "お酒を飲みながら", game_drunk_can_enjoys_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.drunk_can_enjoys.count %></div>
+	    <div id="drunk_can_enjoys_buttons_<%= @game.id %>">
+	     <%= render partial: 'drunk_can_enjoys/drunk_can_enjoy', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.for_singles_partied_by?(current_user) %>
-	      <%= link_to "合コンで盛り上がる", game_for_singles_parties_path(@game), method: :delete, class: "tag_button situation_color" %>
-	    <% else %>
-	      <%= link_to "合コンで盛り上がる", game_for_singles_parties_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.for_singles_parties.count %></div>
+	    <div id="for_singles_parties_buttons_<%= @game.id %>">
+	     <%= render partial: 'for_singles_parties/for_singles_party', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.with_friend_can_enjoyed_by?(current_user) %>
-	      <%= link_to "同性で盛り上がる", game_with_friend_can_enjoys_path(@game), method: :delete, class: "tag_button situation_color" %>
-	    <% else %>
-	      <%= link_to "同性で盛り上がる", game_with_friend_can_enjoys_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.with_friend_can_enjoys.count %></div>
+	    <div id="with_friend_can_enjoys_buttons_<%= @game.id %>">
+	     <%= render partial: 'with_friend_can_enjoys/with_friend_can_enjoy', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <h3 class="col-lg-12">実際のプレイ時間</h3>
 	  <div class="col-lg-2">
-	    <% if @game.light_weighted_by?(current_user) %>
-	      <%= link_to "15分未満", game_light_weights_path(@game), method: :delete, class: "tag_button fact_weight_color" %>
-	    <% else %>
-	      <%= link_to "15分未満", game_light_weights_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.light_weights.count %></div>
+	     <div id="light_weights_buttons_<%= @game.id %>">
+	     <%= render partial: 'light_weights/light_weight', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.midlle_weighted_by?(current_user) %>
-	      <%= link_to "60分未満", game_midlle_weights_path(@game), method: :delete, class: "tag_button fact_weight_color" %>
-	    <% else %>
-	      <%= link_to "60分未満", game_midlle_weights_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.midlle_weights.count %></div>
+	     <div id="midlle_weights_buttons_<%= @game.id %>">
+	     <%= render partial: 'midlle_weights/midlle_weight', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.super_midlle_weighted_by?(current_user) %>
-	      <%= link_to "120分未満", game_super_midlle_weights_path(@game), method: :delete, class: "tag_button fact_weight_color" %>
-	    <% else %>
-	      <%= link_to "120分未満", game_super_midlle_weights_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.super_midlle_weights.count %></div>
+	    <div id="super_midlle_weights_buttons_<%= @game.id %>">
+	     <%= render partial: 'super_midlle_weights/super_midlle_weight', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.heavy_weighted_by?(current_user) %>
-	      <%= link_to "180分未満", game_heavy_weights_path(@game), method: :delete, class: "tag_button fact_weight_color" %>
-	    <% else %>
-	      <%= link_to "180分未満", game_heavy_weights_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.heavy_weights.count %></div>
+	     <div id="heavy_weights_buttons_<%= @game.id %>">
+	     <%= render partial: 'heavy_weights/heavy_weight', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.super_heavy_weighted_by?(current_user) %>
-	      <%= link_to "180分以上", game_super_heavy_weights_path(@game), method: :delete, class: "tag_button fact_weight_color" %>
-	    <% else %>
-	      <%= link_to "180分以上", game_super_heavy_weights_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.super_heavy_weights.count %></div>
+	     <div id="super_heavy_weights_buttons_<%= @game.id %>">
+	     <%= render partial: 'super_heavy_weights/super_heavy_weight', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2"></div>
 	  <h3 class="col-lg-12">メカニクス</h3>
 	  <div class="col-lg-2">
-	    <% if @game.diced_by?(current_user) %>
-	      <%= link_to "ダイス", game_dices_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "ダイス", game_dices_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.dices.count %></div>
+	    <div id="dices_buttons_<%= @game.id %>">
+	     <%= render partial: 'dices/dice', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.buttinged_by?(current_user) %>
-	      <%= link_to "バッティング", game_buttings_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "バッティング", game_buttings_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.buttings.count %></div>
+	    <div id="buttings_buttons_<%= @game.id %>">
+	     <%= render partial: 'buttings/butting', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.actioned_by?(current_user) %>
-	      <%= link_to "アクション", game_actions_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "アクション", game_actions_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.actions.count %></div>
+	    <div id="actions_buttons_<%= @game.id %>">
+	     <%= render partial: 'actions/action', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.tile_placemented_by?(current_user) %>
-	      <%= link_to "タイル配置", game_tile_placements_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "タイル配置", game_tile_placements_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.tile_placements.count %></div>
+	    <div id="tile_placements_buttons_<%= @game.id %>">
+	     <%= render partial: 'tile_placements/tile_placement', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.bluffed_by?(current_user) %>
-	      <%= link_to "ブラフ", game_bluffs_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "ブラフ", game_bluffs_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.bluffs.count %></div>
+	    <div id="bluffs_buttons_<%= @game.id %>">
+	     <%= render partial: 'bluffs/bluff', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.hand_managemented_by?(current_user) %>
-	      <%= link_to "手札管理", game_hand_managements_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "手札管理", game_hand_managements_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.hand_managements.count %></div>
+	    <div id="hand_managements_buttons_<%= @game.id %>">
+	     <%= render partial: 'hand_managements/hand_management', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.set_collectioned_by?(current_user) %>
-	      <%= link_to "セットコレクション", game_set_collections_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "セットコレクション", game_set_collections_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.set_collections.count %></div>
+	    <div id="set_collections_buttons_<%= @game.id %>">
+	     <%= render partial: 'set_collections/set_collection', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.expanded_reproductioned_by?(current_user) %>
-	      <%= link_to "拡大再生産", game_expanded_reproductions_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "拡大再生産", game_expanded_reproductions_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.expanded_reproductions.count %></div>
+	    <div id="expanded_reproductions_buttons_<%= @game.id %>">
+	     <%= render partial: 'expanded_reproductions/expanded_reproduction', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.worker_placemented_by?(current_user) %>
-	      <%= link_to game_worker_placements_path(@game), method: :delete, style: "padding-top: 12px;", class: "tag_button mechanics_color" do %>
-	        ワーカー<br>プレイスメント
-	      <% end %>
-	    <% else %>
-	      <%= link_to game_worker_placements_path(@game), method: :post, style: "padding-top: 12px;", class: "tag_button yet_color" do %>
-	        ワーカー<br>プレイスメント
-	      <% end %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.worker_placements.count %></div>
+	    <div id="worker_placements_buttons_<%= @game.id %>">
+	     <%= render partial: 'worker_placements/worker_placement', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.trick_takinged_by?(current_user) %>
-	      <%= link_to "トリックテイキング", game_trick_takings_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "トリックテイキング", game_trick_takings_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.trick_takings.count %></div>
+	    <div id="trick_takings_buttons_<%= @game.id %>">
+	     <%= render partial: 'trick_takings/trick_taking', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.partnershiped_by?(current_user) %>
-	      <%= link_to "チーム戦", game_partnerships_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "チーム戦", game_partnerships_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.partnerships.count %></div>
+	   <div id="partnerships_buttons_<%= @game.id %>">
+	     <%= render partial: 'partnerships/partnership', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.concealmented_by?(current_user) %>
-	      <%= link_to "正体隠匿", game_concealments_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "正体隠匿", game_concealments_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.concealments.count %></div>
+	    <div id="concealments_buttons_<%= @game.id %>">
+	     <%= render partial: 'concealments/concealment', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.draftinged_by?(current_user) %>
-	      <%= link_to "競り", game_draftings_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "競り", game_draftings_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.draftings.count %></div>
+	   <div id="draftings_buttons_<%= @game.id %>">
+	     <%= render partial: 'draftings/drafting', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.bursted_by?(current_user) %>
-	      <%= link_to "バースト", game_bursts_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "バースト", game_bursts_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.bursts.count %></div>
+	    <div id="bursts_buttons_<%= @game.id %>">
+	     <%= render partial: 'bursts/burst', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.cooperationed_by?(current_user) %>
-	      <%= link_to "協力", game_cooperations_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "協力", game_cooperations_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.cooperations.count %></div>
+	   <div id="cooperations_buttons_<%= @game.id %>">
+	     <%= render partial: 'cooperations/cooperation', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.negotiationed_by?(current_user) %>
-	      <%= link_to "交渉", game_negotiations_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "交渉", game_negotiations_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.negotiations.count %></div>
+	   <div id="negotiations_buttons_<%= @game.id %>">
+	     <%= render partial: 'negotiations/negotiation', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.area_majoritied_by?(current_user) %>
-	      <%= link_to "陣取り", game_area_majorities_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "陣取り", game_area_majorities_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.area_majorities.count %></div>
+	    <div id="area_majorities_buttons_<%= @game.id %>">
+	     <%= render partial: 'area_majorities/area_majority', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.memoried_by?(current_user) %>
-	      <%= link_to "記憶", game_memories_path(@game), method: :delete, class: "tag_button mechanics_color" %>
-	    <% else %>
-	      <%= link_to "記憶", game_memories_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.memories.count %></div>
+	    <div id="memories_buttons_<%= @game.id %>">
+	     <%= render partial: 'memories/memory', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <h3 class="col-lg-12">その他</h3>
 	  <div class="col-lg-2">
-	    <% if @game.repeated_by?(current_user) %>
-	      <%= link_to "何度もやりたくなる", game_repeats_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "何度もやりたくなる", game_repeats_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.repeats.count %></div>
+	    <div id="repeats_buttons_<%= @game.id %>">
+	     <%= render partial: 'repeats/repeat', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.studied_by?(current_user) %>
-	      <%= link_to "研究したくなる", game_studies_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "研究したくなる", game_studies_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.studies.count %></div>
+	    <div id="studies_buttons_<%= @game.id %>">
+	     <%= render partial: 'studies/study', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.lucked_by?(current_user) %>
-	      <%= link_to "運重視", game_lucks_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "運重視", game_lucks_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.lucks.count %></div>
+	    <div id="lucks_buttons_<%= @game.id %>">
+	     <%= render partial: 'lucks/luck', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.forced_by?(current_user) %>
-	      <%= link_to "実力重視", game_forces_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "実力重視", game_forces_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.forces.count %></div>
+	    <div id="forces_buttons_<%= @game.id %>">
+	     <%= render partial: 'forces/force', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.balanced_by?(current_user) %>
-	      <%= link_to game_balances_path(@game), method: :delete, style: "padding-top: 12px;", class: "tag_button other_color" do %>
-	        運と実力の<br>バランスが良い
-	      <% end %>
-	    <% else %>
-	      <%= link_to game_balances_path(@game), method: :post, style: "padding-top: 12px;", class: "tag_button yet_color" do %>
-	        運と実力の<br>バランスが良い
-	      <% end %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.balances.count %></div>
+	    <div id="only_onces_buttons_<%= @game.id %>">
+	     <%= render partial: 'only_onces/only_once', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.repeat_more_interestinged_by?(current_user) %>
-	      <%= link_to game_repeat_more_interestings_path(@game), method: :delete, style: "padding-top: 12px;", class: "tag_button other_color" do %>
-	        回数を重ねるほど<br>面白くなる
-	      <% end %>
-	    <% else %>
-	      <%= link_to game_repeat_more_interestings_path(@game), method: :post, style: "padding-top: 12px;", class: "tag_button yet_color" do %>
-	        回数を重ねるほど<br>面白くなる
-	      <% end %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.repeat_more_interestings.count %></div>
+	    <div id="long_waiting_times_buttons_<%= @game.id %>">
+	     <%= render partial: 'long_waiting_times/long_waiting_time', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.repeat_uninterestinged_by?(current_user) %>
-	      <%= link_to game_repeat_uninterestings_path(@game), method: :delete, style: "padding-top: 12px;", class: "tag_button other_color" do %>
-	        回数を重ねると<br>破綻する
-	      <% end %>
-	    <% else %>
-	      <%= link_to game_repeat_uninterestings_path(@game), method: :post, style: "padding-top: 12px;", class: "tag_button yet_color" do %>
-	        回数を重ねると<br>破綻する
-	      <% end %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.repeat_uninterestings.count %></div>
+	    <div id="easy_rules_buttons_<%= @game.id %>">
+	     <%= render partial: 'easy_rules/easy_rule', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.only_onced_by?(current_user) %>
-	      <%= link_to "一回しか出来ない", game_only_onces_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "一回しか出来ない", game_only_onces_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.only_onces.count %></div>
+	    <div id="easy_to_gets_buttons_<%= @game.id %>">
+	     <%= render partial: 'easy_to_gets/easy_to_get', locals: { game: @game} %>
+	    </div>
 	  </div>
 	  <div class="col-lg-2">
-	    <% if @game.long_waiting_timed_by?(current_user) %>
-	      <%= link_to "ダウンタイムが長い", game_long_waiting_times_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "ダウンタイムが長い", game_long_waiting_times_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.long_waiting_times.count %></div>
+	    <div id="many_expansions_buttons_<%= @game.id %>">
+	     <%= render partial: 'many_expansions/many_expansion', locals: { game: @game} %>
+	    </div>
 	  </div>
-	  <div class="col-lg-2">
-	    <% if @game.easy_ruled_by?(current_user) %>
-	      <%= link_to "ルールが簡単", game_easy_rules_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "ルールが簡単", game_easy_rules_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.easy_rules.count %></div>
-	  </div>
-	  <div class="col-lg-2">
-	    <% if @game.easy_to_geted_by?(current_user) %>
-	      <%= link_to "入手しやすい", game_easy_to_gets_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "入手しやすい", game_easy_to_gets_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.easy_to_gets.count %></div>
-	  </div>
-	  <div class="col-lg-2">
-	    <% if @game.many_expansioned_by?(current_user) %>
-	      <%= link_to "拡張が多い", game_many_expansions_path(@game), method: :delete, class: "tag_button other_color" %>
-	    <% else %>
-	      <%= link_to "拡張が多い", game_many_expansions_path(@game), method: :post, class: "tag_button yet_color" %>
-	    <% end %>
-	    <div class="tag_count"><%= @game.many_expansions.count %></div>
-	  </div>
+	  <div class="col-lg-2"></div>
+	  <div class="col-lg-2"></div>
+	  <div class="col-lg-2"></div>
     </div>
   </div>
 </div>

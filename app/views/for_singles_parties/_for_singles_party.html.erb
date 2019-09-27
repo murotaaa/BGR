@@ -1,0 +1,7 @@
+<% if game.for_singles_partied_by?(current_user) %>
+  <%= link_to "合コンで盛り上がる", game_for_singles_parties_path(game), method: :delete, remote: true, class: "tag_button situation_color" %>
+  <div class="tag_count"><%= @game.for_singles_parties.count %></div>
+<% else %>
+  <%= link_to "合コンで盛り上がる", game_for_singles_parties_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.for_singles_parties.count %></div>
+<% end %>

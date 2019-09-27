@@ -1,0 +1,7 @@
+<% if game.diced_by?(current_user) %>
+  <%= link_to "ダイス", game_dices_path(game), method: :delete, remote: true, class: "tag_button mechanics_color" %>
+  <div class="tag_count"><%= @game.dices.count %></div>
+<% else %>
+  <%= link_to "ダイス", game_dices_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.dices.count %></div>
+<% end %>

@@ -1,0 +1,7 @@
+<% if game.negotiationed_by?(current_user) %>
+  <%= link_to "交渉", game_negotiations_path(game), method: :delete, remote: true, class: "tag_button mechanics_color" %>
+  <div class="tag_count"><%= @game.negotiations.count %></div>
+<% else %>
+  <%= link_to "交渉", game_negotiations_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.negotiations.count %></div>
+<% end %>

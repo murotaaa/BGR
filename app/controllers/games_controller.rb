@@ -10,7 +10,11 @@ class GamesController < ApplicationController
   end
 
   def show
-      @game = Game.find(params[:id])
+      if user_signed_in?
+        @game = Game.find(params[:id])
+      else
+        redirect_to new_user_session_path ,notice: 'ログインしてください。'
+      end
   end
 
   def new
@@ -19,9 +23,12 @@ class GamesController < ApplicationController
 
   def create
       game = Game.new(game_params)
-      game.user_id = current_user.id
-      game.save
-      redirect_to games_path
+      if
+        game.save
+        redirect_to games_path
+      else
+        redirect_to new_game_path ,notice: '全ての項目を埋めてください。'
+      end
   end
 
   def edit

@@ -1,0 +1,7 @@
+<% if game.excitemented_by?(current_user) %>
+  <%= link_to "ワイワイ", game_excitements_path(game), method: :delete, remote: true, class: "tag_button situation_color" %>
+  <div class="tag_count"><%= @game.excitements.count %></div>
+<% else %>
+  <%= link_to "ワイワイ", game_excitements_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.excitements.count %></div>
+<% end %>

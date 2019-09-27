@@ -1,0 +1,1 @@
+$('#long_waiting_times_buttons_<%= @game.id %>').html("<%= j(render partial: 'long_waiting_times/long_waiting_time', locals: {game: @game}) %>");

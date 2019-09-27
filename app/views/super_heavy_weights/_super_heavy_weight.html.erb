@@ -1,0 +1,7 @@
+<% if game.super_heavy_weighted_by?(current_user) %>
+  <%= link_to "180分以上", game_super_heavy_weights_path(game), method: :delete, remote: true, class: "tag_button fact_weight_color" %>
+  <div class="tag_count"><%= @game.super_heavy_weights.count %></div>
+<% else %>
+  <%= link_to "180分以上", game_super_heavy_weights_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.super_heavy_weights.count %></div>
+<% end %>

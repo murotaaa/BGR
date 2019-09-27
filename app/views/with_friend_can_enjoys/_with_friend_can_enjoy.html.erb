@@ -1,0 +1,7 @@
+<% if game.with_friend_can_enjoyed_by?(current_user) %>
+  <%= link_to "気の知れた友人と", game_with_friend_can_enjoys_path(game), method: :delete, remote: true, class: "tag_button situation_color" %>
+  <div class="tag_count"><%= @game.with_friend_can_enjoys.count %></div>
+<% else %>
+  <%= link_to "気の知れた友人と", game_with_friend_can_enjoys_path(game), method: :post, remote: true, class: "tag_button yet_color" %>
+  <div class="tag_count"><%= @game.with_friend_can_enjoys.count %></div>
+<% end %>
