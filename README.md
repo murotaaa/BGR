@@ -1,24 +1,24 @@
-# README
+#README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##ボドレビュ！
+ボドレビュ！は世界のボードゲームのレビューサイトです。  
+とはいえ、単なるレビューサイトではございません。  
+レビューサイトで長々と書かれている文章投稿者が結局なにを伝えたいのかわからなかった。   
+レビューを投稿しようと思ったけど文章を考えるのが面倒くさい。  
+そんな経験ありませんか？  
+そんな問題を解決する、  
+ボタンを押すだけで簡単にレビューが出来て、  
+見る側も内容が統一されているのですっきりわかりやすい。  
+レビューは文章でなくボタンで行う新感覚ボードゲームレビューサイトです。
 
-Things you may want to cover:
+##Dependency
+ruby 2.5.5  Rails 5.2.3
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Usage
+ゲームの登録及び、登録者であれば編集と削除が出来ます。  
+ゲーム登録の際は空欄があると登録出来ない仕様なのでご注意ください。  
+詳細画面では様々なボタンを押すことにより、直感的にレビューすることが出来ます。  
+また全ユーザーにボタンが押された回数が表示されているので、  
+どういったゲームなのか読み取ることが可能です。  
+ウォッチリストに入れておくと簡単に詳細画面まで飛ぶことが出来るので、  
+まだレビュー数が少ない時などは利用すると後ほどまたレビューを見る際に便利です。
