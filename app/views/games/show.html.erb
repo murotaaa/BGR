@@ -16,7 +16,7 @@
 		</div>
 		<% if @game.user == current_user %>
 		  <%= link_to "編集", edit_game_path, class: "show_button edit_color" %>
-	      <%= link_to "削除", game_path, method: :delete, class: "show_button destroy_color" %>
+	      <%= link_to "削除", game_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "show_button destroy_color" %>
 	    <% end %>
 	  </div>
 	  <h3 class="col-lg-12">評価</h3>
