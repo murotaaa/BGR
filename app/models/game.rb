@@ -6,10 +6,10 @@ class Game < ApplicationRecord
   validates :title, presence: true
   validates :original_title, presence: true
   validates :designer, presence: true
+  validates :release, presence: true
   validates :player, presence: true
   validates :age, presence: true
   validates :weight, presence: true
-  validates :release, presence: true
 
   has_many :excellents
   has_many :goods

@@ -23,12 +23,9 @@ class GamesController < ApplicationController
 
   def create
       game = Game.new(game_params)
-      if
-        game.save
-        redirect_to games_path
-      else
-        redirect_to new_game_path ,notice: '全ての項目を埋めてください。'
-      end
+      game.user_id = current_user.id
+      game.save
+      redirect_to root_path
   end
 
   def edit
@@ -38,13 +35,13 @@ class GamesController < ApplicationController
   def update
       game = Game.find(params[:id])
       game.update(game_params)
-      redirect_to games_path
+      redirect_to root_path
   end
 
   def destroy
       game = Game.find(params[:id])
       game.destroy
-      redirect_to games_path
+      redirect_to root_path
   end
 
   def about

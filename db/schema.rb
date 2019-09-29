@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_053318) do
+ActiveRecord::Schema.define(version: 2019_09_29_010058) do
 
   create_table "actions", force: :cascade do |t|
     t.integer "user_id"
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(version: 2019_09_25_053318) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "title"
     t.string "original_title"
     t.string "designer"
